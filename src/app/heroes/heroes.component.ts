@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
-import { Heroes } from '../mock-heroes';
 import { Router } from '@angular/router'
+import { HeroService } from '../hero.service'
+import { MessageService } from '../message.service'
 
 @Component({
   selector: 'app-heroes',
@@ -13,14 +14,16 @@ export class HeroesComponent implements OnInit {
   showDetail: boolean = false;
   heroSelected!: Hero;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private HeroService: HeroService, private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.heroes = Heroes
+    this.HeroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 
   onSelect(hero: Hero) {
     this.router.navigate(['/details', hero.id])
+    this.messageService.add(`HeroesComponent:
+Selected hero id=${hero.id}`);
   }
 
   showDetailFunction(heroSelected: Hero) {

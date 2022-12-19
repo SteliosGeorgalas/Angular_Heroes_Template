@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Hero } from '../hero';
-import { Heroes } from '../mock-heroes';
+import { HeroService } from '../hero.service'
 
 @Component({
   selector: 'app-hero-details',
@@ -16,21 +16,18 @@ export class HeroDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private HeroService: HeroService
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.hero = this.getHero(params['id'])!;
+      this.HeroService.getHero(params['id']).subscribe(hero => this.hero = hero);
     })
   }
 
   goBack(): void {
     this.location.back();
-  }
-
-  getHero(id: number) {
-    return Heroes.find(x => x.id == id);
   }
 
 }
