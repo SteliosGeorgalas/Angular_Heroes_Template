@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
+import { Heroes } from '../mock-heroes';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-heroes',
@@ -7,12 +9,22 @@ import { Hero } from '../hero';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
+  heroes!: Hero[];
+  showDetail: boolean = false;
+  heroSelected!: Hero;
 
-  hero = { id: 1, name: "Windslow" }
-
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.heroes = Heroes
+  }
 
+  onSelect(hero: Hero) {
+    this.router.navigate(['/details', hero.id])
+  }
+
+  showDetailFunction(heroSelected: Hero) {
+    this.showDetail = true;
+    this.heroSelected = heroSelected;
   }
 }

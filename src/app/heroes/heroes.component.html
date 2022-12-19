@@ -1,7 +1,16 @@
-<h2>{{hero.name}}Details</h2>
-<div>
-    <span>id: </span>{{hero.id}}
-</div>
-<div>
-    <span>name: </span>{{hero.name | uppercase}}
+<h1>My Heroes</h1>
+
+<ul>
+  <li *ngFor="let hero of heroes">
+    <a (click)="showDetailFunction(hero)">
+      <span>{{hero.id}}</span> {{hero.name}}
+    </a>
+  </li>
+</ul>
+
+<div *ngIf="showDetail">
+  {{heroSelected.name | uppercase}} is my hero
+  <tr>
+    <button (click)="onSelect(heroSelected)">View Details</button>
+  </tr>
 </div>
