@@ -1,1 +1,13 @@
-<p>dashboard works!</p>
+<nav>
+  <td><a routerLink="/dashboard">Dashboard</a></td>
+  <td><a routerLink="/heroes">Heroes</a></td>
+</nav>
+
+<h1>Top Heroes</h1>
+<div>
+  <a *ngFor="let hero of heroes" (click)="onSelect(hero)">
+    <div>
+      <h4>{{hero.name}}</h4>
+    </div>
+  </a>
+</div>
