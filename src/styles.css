@@ -15,6 +15,9 @@ h3 {
 
 body {
     margin: 2em;
+    display: flex;
+    justify-content: center;
+    /* text-align: center; */
 }
 
 body,
