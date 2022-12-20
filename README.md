@@ -1,27 +1,68 @@
-# AngularHeroesMscProject
+# What is the Use of This Repo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+This App is a Simple Angular App which uses
 
-## Development server
+1. Angular Components
+2. Angular Routing
+3. Services
+4. Very Basic CSS
+5. Communication from parent to child component
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## What Does this Application do
 
-## Code scaffolding
+This Application has just three pages.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+   1. A Heroes List Page which Lists out all the heroes
+   2. A Heroes Details Page which will display the Details for the Selected Hero
+   3. A dashboard which displays the top heroes
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Prerequites to Run the Application
 
-## Running unit tests
+## Install NodeJS
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Refer `https://nodejs.org/en/` to install NodeJS
 
-## Running end-to-end tests
+## Install Angular CLI
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Use the following command to install angular CLI
 
-## Further help
+`npm install -g @angular/cli`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Refer https://cli.angular.io/ to know more about angular CLI
+
+## Steps to Run the Application
+
+Clone the repo into local
+
+In Order to Run the Application Type the following command in command prompt
+
+`ng serve`
+
+The Application runs on localhost:4200
+
+## Application Design
+
+The Components Created are
+
+    1. heroes.component : This Component Is to Display the List of Heroes
+
+    2. hero-details.component : This Component Displays the Details for a Single Selected Hero
+
+    3. dashboard.component : This Component Displays the Top Heros as a landing page.
+
+    4. messages.component : This Component Displays a history of users navigation between components.
+
+The Services Created are
+
+    1. hero.service : All the Data used in the application are stored in mock-heroes.ts. Hero service helps in retrieving the data from the specified file replicating a Http Request. In Real Applications , the Service Helps to Get the Data from a Rest API or any other API by making a HTTP Request
+
+    2. messages.service : Message service helps in replicating a Http request from and to a database so as to 'get/post/delete' Messages. In Real Applications, the Service Helps to Get the Data from a Rest API or any other API by making a HTTP Request
+
+Routing Module is used to Route between the 3 pages in the application. The 3 paths used in the routing module are
+
+    1. /dashboard : This url displays the dashboard which is used as a landing page and displays the top 4 heroes
+
+    2. /heroes : This url displays the list of heroes and points to the hero details if one selected
+   
+    3. /details/id : This url displays the details for the selected hero 
